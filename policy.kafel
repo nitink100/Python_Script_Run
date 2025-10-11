@@ -1,0 +1,8 @@
+POLICY sockets_off {
+  DEFAULT ALLOW
+  KILL {
+    socket, socketpair, connect, accept, accept4, bind, listen,
+    getsockname, getpeername, sendto, sendmsg, recvfrom, recvmsg, shutdown,
+    setsockopt, getsockopt
+  }
+}

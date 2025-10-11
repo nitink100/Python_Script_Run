@@ -1,0 +1,3 @@
+{
+  "script": "def main():\n  print('hello')\n  return {'ok': True}\n"
+}

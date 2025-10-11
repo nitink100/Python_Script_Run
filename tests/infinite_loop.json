@@ -1,0 +1,3 @@
+{
+  "script": "def main():\n  while True: pass\n"
+}

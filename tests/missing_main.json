@@ -1,0 +1,3 @@
+{
+  "script": "def notmain():\n  return 1\n"
+}
