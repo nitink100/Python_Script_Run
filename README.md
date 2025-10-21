@@ -1,39 +1,3 @@
-Nice—I've unpacked your latest zip and checked the repo. Here’s what you’ve got now:
-
-* Root: `app.py`, `runner.py`, `policy.kafel`, `Dockerfile`, `requirements.txt`, `docker-compose.yml`, `Makefile`, `LICENSE`, `.gitignore`, `.editorconfig`, `.pre-commit-config.yaml`, `CONTRIBUTING.md`, `SECURITY.md`, `README.md`
-* New docs: `openapi_spec.py`, `api_docs.py`
-* Blueprints are correctly registered in `app.py` (`/docs` and `/openapi.json` are live).
-* I noticed a macOS artifact `.DS_Store` in the root. Your `.gitignore` already ignores `.venv/` but **not** `.DS_Store`.
-
-Two tiny, non-breaking improvements:
-
-1. Add `.DS_Store` to `.gitignore` (one line; keeps the repo clean).
-2. Replace `README.md` with the updated version below (includes `/docs` & `/openapi.json`, and an optional `/routes` debug tip).
-
-If that works for you, do just these two edits.
-
----
-
-# 1) Append to `.gitignore` (one line)
-
-Add this to the end of `.gitignore`:
-
-```
-# macOS
-.DS_Store
-```
-
-Optionally delete the existing file:
-
-```bash
-git rm -f .DS_Store
-```
-
----
-
-# 2) Replace `README.md` with this (copy–paste all)
-
-````markdown
 # Safe Python Execution Service
 
 A small, secure microservice that executes **untrusted Python code** under strict limits.  
@@ -52,7 +16,7 @@ Built as a take-home exercise; packaged for easy local use and Google Cloud Run 
 
 ## Endpoints
 
-### `GET /health` and `GET /healthz`
+### `GET /health`
 - **200 OK** → `{"ok": true}`
 
 ### `POST /execute`
