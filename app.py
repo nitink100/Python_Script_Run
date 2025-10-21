@@ -1,6 +1,7 @@
 import os, uuid, ast, json, shutil, subprocess
 from typing import Any, Dict
 from flask import Flask, request, jsonify
+from api_docs import openapi_bp, docs_bp
 
 # --- Tunables ---
 MAX_SCRIPT_BYTES = int(os.getenv("MAX_SCRIPT_BYTES", 64 * 1024))
@@ -16,14 +17,14 @@ PORT            = int(os.getenv("PORT", "8080"))
 FORCE_COMPAT    = os.getenv("FORCE_COMPAT", "0").lower() in ("1","true","yes")
 
 app = Flask(__name__)
+app.register_blueprint(openapi_bp)
+app.register_blueprint(docs_bp)
+
 
 def _error(code: str, message: str, http=400, details: Dict[str, Any] | None = None):
     payload = {"error": {"code": code, "message": message}}
     if details: payload["error"]["details"] = details
     return jsonify(payload), http
-
-@app.get("/healthz")
-def healthz(): return jsonify({"ok": True})
 
 @app.get("/health")
 def health(): return jsonify({"ok": True})
